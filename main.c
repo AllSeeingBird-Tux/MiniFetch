@@ -1,26 +1,45 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 #include <sys/types.h>
 #include <sys/socket.h>
-#include <sys/ioctl.h>
 #include <netinet/in.h>
-#include <net/if.h>
-#include <unistd.h>
 #include <arpa/inet.h>
+#include <ifaddrs.h>
+#include <unistd.h>
+#include <netdb.h>
 
 int main()
 {
-    int n;
-    struct ifreq ifr;
-    char array[] = "eth0";
+    struct ifaddrs *ifaddr, *ifa;
+    char host[NI_MAXHOST];
     char hostname[1024];
     int result;
 
-    n = socket(AF_INET, SOCK_DGRAM, 0);
-    ifr.ifr_addr.sa_family = AF_INET;
-    strncpy(ifr.ifr_name , array, IFNAMSIZ - 1);
-    ioctl(n, SIOCGIFADDR, &ifr);
-    close(n);
+    if (getifaddrs(&ifaddr) == -1) {
+        perror("getifaddrs");
+        return EXIT_FAILURE;
+    }
+
+    for (ifa = ifaddr; ifa != NULL; ifa = ifa->ifa_next) {
+        if (ifa->ifa_addr == NULL)
+            continue;
+
+        if (ifa->ifa_addr->sa_family == AF_INET) {
+            int result = getnameinfo(ifa->ifa_addr, sizeof(struct sockaddr_in),
+                                     host, NI_MAXHOST, NULL, 0, NI_NUMERICHOST);
+            if (result != 0) {
+                printf("getnameinfo() failed: %s\n", gai_strerror(result));
+                continue;
+            }
+
+            printf("Interface: %s\tAddress: %s\n", ifa->ifa_name, host);
+
+        }
+    
+    }
+
+    freeifaddrs(ifaddr);
 
     result = gethostname(hostname, sizeof(hostname));
     if (result == 0) {
@@ -29,7 +48,6 @@ int main()
         perror("gethostname");
     }
     
-    printf("IP Address is %s - %s\n" , array , inet_ntoa(( (struct sockaddr_in *)&ifr.ifr_addr )->sin_addr) );
     return 0;
 
 
