@@ -9,13 +9,38 @@
 #include <unistd.h>
 #include <netdb.h>
 
+void get_cpu_info() {
+        FILE* cpuinfo = fopen("/proc/cpuinfo", "rb");
+        char* line = NULL;
+        size_t size = 0;
+    
+    if (cpuinfo == NULL) {
+        perror("Failed to open /proc/cpuinfo");
+        return;
+    }
+
+    while (getline(&line, &size, cpuinfo) != -1) {
+        if (strstr(line, "model name") != NULL) {
+            char* model_name = strchr(line, ':');
+            if (model_name) {
+                model_name++; 
+                while (*model_name == ' ' || *model_name == '\t') model_name++; 
+                printf("CPU Model: %s", model_name);
+            }
+            break;
+        }
+    }
+    free(line);
+    fclose(cpuinfo);
+}
+
 int main()
 {
     struct ifaddrs *ifaddr, *ifa;
     char host[NI_MAXHOST];
     char hostname[1024];
     int result;
-
+    get_cpu_info();
     if (getifaddrs(&ifaddr) == -1) {
         perror("getifaddrs");
         return EXIT_FAILURE;
@@ -47,6 +72,8 @@ int main()
     }   else {
         perror("gethostname");
     }
+
+    
     
     return 0;
 
