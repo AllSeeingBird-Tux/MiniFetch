@@ -41,6 +41,7 @@ int main()
     char hostname[1024];
     int result;
     get_cpu_info();
+    printf("\n");
     if (getifaddrs(&ifaddr) == -1) {
         perror("getifaddrs");
         return EXIT_FAILURE;
