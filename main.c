@@ -9,6 +9,10 @@
 #include <unistd.h>
 #include <netdb.h>
 
+void red () {
+  printf("\033[1;31m");
+}
+
 void get_cpu_info() {
         FILE* cpuinfo = fopen("/proc/cpuinfo", "rb");
         char* line = NULL;
@@ -18,6 +22,8 @@ void get_cpu_info() {
         perror("Failed to open /proc/cpuinfo");
         return;
     }
+
+
 
     while (getline(&line, &size, cpuinfo) != -1) {
         if (strstr(line, "model name") != NULL) {
@@ -40,6 +46,7 @@ int main()
     char host[NI_MAXHOST];
     char hostname[1024];
     int result;
+    red();
     get_cpu_info();
     printf("\n");
     if (getifaddrs(&ifaddr) == -1) {
