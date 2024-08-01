@@ -1,11 +1,13 @@
 # MiniFetch
-A work in progress ripoff of fastfetch.
+A W.I.P ripoff of fastfetch.
 
-# Use Guide:
-This program is designed for use on the Linux Kernel, attempted use on Windows will not work properly.
+## Usage Guide:
+This program is designed for use on the Linux Kernel, and currently has 0 support for Windows.
 
-In order to use the program open a console terminal in the folder where you have the main.c file.
-
-Type "gcc main.c -o main".
-
-Afterwards type "./main"
+In order to compile and run MiniFetch:
+```bash
+# Compiling MiniFetch
+$ gcc main.c -o minifetch
+# Running MiniFetch
+$ ./minifetch
+```
