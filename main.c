@@ -56,10 +56,12 @@ int main()
                                      host, NI_MAXHOST, NULL, 0, NI_NUMERICHOST);
             if (result != 0) {
                 printf("getnameinfo() failed: %s\n", gai_strerror(result));
+                printf("\n");
                 continue;
             }
 
             printf("Interface: %s\tAddress: %s\n", ifa->ifa_name, host);
+            printf("\n");
 
         }
     
@@ -70,6 +72,7 @@ int main()
     result = gethostname(hostname, sizeof(hostname));
     if (result == 0) {
         printf("Hostname: %s\n", hostname);
+        printf("\n");
     }   else {
         perror("gethostname");
     }
