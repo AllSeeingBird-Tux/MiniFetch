@@ -11,3 +11,7 @@ $ gcc main.c other.c -o minifetch
 # Running MiniFetch
 $ ./minifetch
 ```
+
+## Current Contributors
+AllSeeingBird-Tux
+AstroLazyBones
