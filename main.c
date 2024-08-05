@@ -13,6 +13,10 @@ void red () {
   printf("\033[1;31m");
 }
 
+void reset () {
+  printf("\033[0m");
+}
+
 void get_cpu_info() {
         FILE* cpuinfo = fopen("/proc/cpuinfo", "rb");
         char* line = NULL;
@@ -47,8 +51,25 @@ int main()
     char hostname[1024];
     int result;
     red();
+	printf("------------- MiniFetch -------------");
+	reset();
+	printf("\n");
+	
+	result = gethostname(hostname, sizeof(hostname));
+    if (result == 0) {
+        printf("Hostname: %s\n", hostname);
+    }   else {
+        perror("gethostname");
+    }
+	
+    #if defined(__linux__)
+        printf("OS: Linux\n");
+		
+	#endif
+	
+	
+	
     get_cpu_info();
-    printf("\n");
     if (getifaddrs(&ifaddr) == -1) {
         perror("getifaddrs");
         return EXIT_FAILURE;
@@ -59,15 +80,15 @@ int main()
             continue;
 
         if (ifa->ifa_addr->sa_family == AF_INET) {
-            int result = getnameinfo(ifa->ifa_addr, sizeof(struct sockaddr_in),
-                                     host, NI_MAXHOST, NULL, 0, NI_NUMERICHOST);
+            int result = getnameinfo(ifa->ifa_addr, sizeof(struct sockaddr_in), host, NI_MAXHOST, NULL, 0, NI_NUMERICHOST);
+
             if (result != 0) {
-                printf("getnameinfo() failed: %s\n", gai_strerror(result));
-                printf("\n");
+                printf("getnameinfo() failed: %s", gai_strerror(result));
                 continue;
             }
 
-            printf("Interface: %s\tAddress: %s\n", ifa->ifa_name, host);
+
+            printf("Interface (%s): %s", ifa->ifa_name, host);
             printf("\n");
 
         }
@@ -76,13 +97,6 @@ int main()
 
     freeifaddrs(ifaddr);
 
-    result = gethostname(hostname, sizeof(hostname));
-    if (result == 0) {
-        printf("Hostname: %s\n", hostname);
-        printf("\n");
-    }   else {
-        perror("gethostname");
-    }
 
     
     
