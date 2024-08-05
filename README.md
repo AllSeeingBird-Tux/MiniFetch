@@ -14,4 +14,5 @@ $ ./minifetch
 
 ## Current Contributors
 AllSeeingBird-Tux
+
 AstroLazyBones
