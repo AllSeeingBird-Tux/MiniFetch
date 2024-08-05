@@ -7,7 +7,7 @@ This program is designed for use on the Linux Kernel, and currently has 0 suppor
 In order to compile and run MiniFetch:
 ```bash
 # Compiling MiniFetch
-$ gcc main.c -o minifetch
+$ gcc main.c other.c -o minifetch
 # Running MiniFetch
 $ ./minifetch
 ```
