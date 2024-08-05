@@ -8,6 +8,9 @@
 #include <ifaddrs.h>
 #include <unistd.h>
 #include <netdb.h>
+#include "other.h"
+
+
 
 void red () {
   printf("\033[1;31m");
@@ -44,7 +47,8 @@ void get_cpu_info() {
     fclose(cpuinfo);
 }
 
-int main() {
+int main()
+{
     printf("\n");
     struct ifaddrs *ifaddr, *ifa;
     char host[NI_MAXHOST];
@@ -66,7 +70,9 @@ int main() {
         printf("OS: Linux\n");
 		
 	#endif
+    get_linux_distribution();
 	
+    get_gpu_info();
 	
 	
     get_cpu_info();
@@ -95,7 +101,12 @@ int main() {
     
     }
 
-    freeifaddrs(ifaddr); 
-    printf("\n");
+    freeifaddrs(ifaddr);
+
+
+    
+    
     return 0;
+
+
 }
