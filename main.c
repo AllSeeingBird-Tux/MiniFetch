@@ -44,8 +44,8 @@ void get_cpu_info() {
     fclose(cpuinfo);
 }
 
-int main()
-{
+int main() {
+    printf("\n");
     struct ifaddrs *ifaddr, *ifa;
     char host[NI_MAXHOST];
     char hostname[1024];
@@ -95,12 +95,7 @@ int main()
     
     }
 
-    freeifaddrs(ifaddr);
-
-
-    
-    
+    freeifaddrs(ifaddr); 
+    printf("\n");
     return 0;
-
-
 }
