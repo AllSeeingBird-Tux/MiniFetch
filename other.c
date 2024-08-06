@@ -75,3 +75,30 @@ void get_linux_distribution() {
         printf("Failed to detect Linux distribution\n");
     }
 }
+
+void get_cpu_info() {
+        FILE* cpuinfo = fopen("/proc/cpuinfo", "rb");
+        char* line = NULL;
+        size_t size = 0;
+    
+    if (cpuinfo == NULL) {
+        perror("Failed to open /proc/cpuinfo");
+        return;
+    }
+
+
+
+    while (getline(&line, &size, cpuinfo) != -1) {
+        if (strstr(line, "model name") != NULL) {
+            char* model_name = strchr(line, ':');
+            if (model_name) {
+                model_name++; 
+                while (*model_name == ' ' || *model_name == '\t') model_name++; 
+                printf("CPU Model: %s", model_name);
+            }
+            break;
+        }
+    }
+    free(line);
+    fclose(cpuinfo);
+}

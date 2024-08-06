@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <sys/types.h>
 #include <sys/socket.h>
+#include <sys/sysinfo.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <ifaddrs.h>
@@ -20,37 +21,13 @@ void reset () {
   printf("\033[0m");
 }
 
-void get_cpu_info() {
-        FILE* cpuinfo = fopen("/proc/cpuinfo", "rb");
-        char* line = NULL;
-        size_t size = 0;
-    
-    if (cpuinfo == NULL) {
-        perror("Failed to open /proc/cpuinfo");
-        return;
-    }
 
-
-
-    while (getline(&line, &size, cpuinfo) != -1) {
-        if (strstr(line, "model name") != NULL) {
-            char* model_name = strchr(line, ':');
-            if (model_name) {
-                model_name++; 
-                while (*model_name == ' ' || *model_name == '\t') model_name++; 
-                printf("CPU Model: %s", model_name);
-            }
-            break;
-        }
-    }
-    free(line);
-    fclose(cpuinfo);
-}
 
 int main()
 {
     printf("\n");
     struct ifaddrs *ifaddr, *ifa;
+	struct sysinfo info;
     char host[NI_MAXHOST];
     char hostname[1024];
     int result;
@@ -72,10 +49,19 @@ int main()
 	#endif
     get_linux_distribution();
 	
+	get_cpu_info();
+	
     get_gpu_info();
 	
+	 if (sysinfo(&info) != 0) {
+        perror("sysinfo");
+        return EXIT_FAILURE;
+    }
 	
-    get_cpu_info();
+	printf("Total RAM: %lu MB\n", info.totalram / (1024 * 1024));
+	
+	return EXIT_SUCCESS;
+
     if (getifaddrs(&ifaddr) == -1) {
         perror("getifaddrs");
         return EXIT_FAILURE;
