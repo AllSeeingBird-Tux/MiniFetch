@@ -2,7 +2,7 @@
 A W.I.P ripoff of fastfetch.
 
 ## Usage Guide:
-This program is designed for use on the Linux Kernel, and currently has 0 support for Windows.
+This program is designed for use on the Linux Kernel, attempting to run it on windows will cause multiple errors.
 
 In order to compile and run MiniFetch:
 ```bash
@@ -15,4 +15,4 @@ $ ./minifetch
 ## Current Contributors
 AllSeeingBird-Tux
 
-AstroLazyBones
+astroLazybones
