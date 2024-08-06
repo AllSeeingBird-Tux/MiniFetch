@@ -90,7 +90,7 @@ int main()
     freeifaddrs(ifaddr);
 
 
-    
+    printf("\n");
     
     return 0;
 
