@@ -4,7 +4,7 @@ A W.I.P ripoff of fastfetch.
 ## Features
 
 - Displays the hostname
-- Detects the operating system (Linux)
+- Detects the operating system
 - Shows Linux distribution information
 - Displays CPU and GPU information
 - Shows total RAM
@@ -24,7 +24,7 @@ A W.I.P ripoff of fastfetch.
 
     ```bash
     git clone https://github.com/AllSeeingBird-Tux/MiniFetch
-    cd minifetch
+    cd MiniFetch
     ```
 
 2. **Compile and Install:**
@@ -39,10 +39,10 @@ A W.I.P ripoff of fastfetch.
 
 ## Usage
 
-After installation, you can run the `minifetch` command in your terminal:
+After installation, you can run the `MiniFetch` command in your terminal:
 
 ```bash
-minifetch
+MiniFetch
 ```
 
 ## Current Contributors
