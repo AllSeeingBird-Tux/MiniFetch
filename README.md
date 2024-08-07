@@ -23,7 +23,7 @@ A W.I.P ripoff of fastfetch.
 1. **Clone the repository:**
 
     ```bash
-    git clone https://github.com/yourusername/minifetch.git
+    git clone https://github.com/AllSeeingBird-Tux/MiniFetch
     cd minifetch
     ```
 
@@ -43,6 +43,7 @@ After installation, you can run the `minifetch` command in your terminal:
 
 ```bash
 minifetch
+```
 
 ## Current Contributors
 AllSeeingBird-Tux
