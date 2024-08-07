@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-make MakeFile
+make
 
 
 if [ $? -eq 0 ]; then
