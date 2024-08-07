@@ -1,11 +1,12 @@
 #!/bin/bash
 
 
-make
+make MakeFile
 
 
 if [ $? -eq 0 ]; then
-    sudo mv minifetch /usr/local/bin/
+	gcc main.c other.c -o MiniFetch
+    sudo mv MiniFetch /usr/local/bin/
 
     if [ $? -eq 0 ]; then
         echo "minifetch installed successfully!"
