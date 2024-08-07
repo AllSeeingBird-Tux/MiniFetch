@@ -23,8 +23,8 @@ void reset () {
 
 
 
-int main()
-{
+int main() {
+
     printf("\n");
     struct ifaddrs *ifaddr, *ifa;
 	struct sysinfo info;
@@ -60,7 +60,6 @@ int main()
 	
 	printf("Total RAM: %lu MB\n", info.totalram / (1024 * 1024));
 	
-	return EXIT_SUCCESS;
 
     if (getifaddrs(&ifaddr) == -1) {
         perror("getifaddrs");
@@ -79,7 +78,6 @@ int main()
                 continue;
             }
 
-
             printf("Interface (%s): %s", ifa->ifa_name, host);
             printf("\n");
 
@@ -88,11 +86,9 @@ int main()
     }
 
     freeifaddrs(ifaddr);
-
-
-    printf("\n");
-    
-    return 0;
-
+	
+	printf("\n");
+	
+	return 0;
 
 }
