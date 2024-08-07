@@ -1,6 +1,8 @@
 # MiniFetch
 A W.I.P ripoff of fastfetch.
 
+Unfortunately theres currently a few errors regarding installation.
+
 ## Features
 
 - Displays the hostname
@@ -17,6 +19,7 @@ A W.I.P ripoff of fastfetch.
 - GCC (GNU Compiler Collection)
 - Make
 - Standard C libraries
+- dos2unix
 
 ### Steps
 
@@ -32,6 +35,8 @@ A W.I.P ripoff of fastfetch.
     Run the `install.sh` script to compile and install the `minifetch` command:
 
     ```bash
+    dos2unix install.sh
+    chmod +x install.sh
     ./install.sh
     ```
 
