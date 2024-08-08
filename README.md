@@ -44,10 +44,10 @@ Unfortunately theres currently a few errors regarding installation.
 
 ## Usage
 
-After installation, you can run the `MiniFetch` command in your terminal:
+After installation, you can run the `minifetch` command in your terminal:
 
 ```bash
-MiniFetch
+minifetch
 ```
 
 ## Current Contributors
