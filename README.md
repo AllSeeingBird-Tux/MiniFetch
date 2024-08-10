@@ -1,7 +1,6 @@
 # MiniFetch
 A W.I.P ripoff of fastfetch.
-
-Unfortunately theres currently a few errors regarding installation.
+![MiniFetch](https://github.com/user-attachments/assets/8e42a4d0-773a-403c-9990-cf6baabccb06)
 
 ## Features
 
