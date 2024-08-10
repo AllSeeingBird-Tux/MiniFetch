@@ -20,7 +20,6 @@ Unfortunately theres currently a few errors regarding installation.
 - GCC (GNU Compiler Collection)
 - Make
 - Standard C libraries
-- dos2unix
 
 ### Steps
 
@@ -36,7 +35,6 @@ Unfortunately theres currently a few errors regarding installation.
     Run the `install.sh` script to compile and install the `minifetch` command:
 
     ```bash
-    dos2unix install.sh
     chmod +x install.sh
     ./install.sh
     ```
