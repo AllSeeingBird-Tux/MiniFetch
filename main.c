@@ -14,7 +14,7 @@
 
 
 void red () {
-  printf("\033[1;31m");
+  printf("\033[0;32m");
 }
 
 void reset () {
@@ -22,6 +22,7 @@ void reset () {
 }
 
 
+extern char *distro_name;
 
 int main() {
 
@@ -31,9 +32,20 @@ int main() {
     char host[NI_MAXHOST];
     char hostname[1024];
     int result;
+
     red();
-	printf("------------- MiniFetch -------------");
-	reset();
+	printf("------------------------------------ MiniFetch -----------------------------");
+	printf("\n");
+
+
+    printf(" |       _____   .__         .__ ___________          __           .__      \n"
+           " |      /     \\  |__|  ____  |__|\\_   _____/  ____  _/  |_   ____  |  |__   \n"
+           " |     /  \\ /  \\ |  | /    \\ |  | |    __)  _/ __ \\ \\   __\\_/ ___\\ |  |  \\  \n"
+           " |    /    Y    \\|  ||   |  \\|  | |     \\   \\  ___/  |  |  \\  \\___ |   Y  \\ \n"
+           " |    \\____|__  /|__||___|  /|__| \\___  /    \\___  > |__|   \\___  >|___|  / \n"
+           " |            \\/          \\/          \\/         \\/             \\/      \\/ \n");
+
+    reset();
 	printf("\n");
 	
 	result = gethostname(hostname, sizeof(hostname));
@@ -84,6 +96,9 @@ int main() {
         }
     
     }
+
+    
+
 
     freeifaddrs(ifaddr);
 	

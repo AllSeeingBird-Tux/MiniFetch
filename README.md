@@ -8,7 +8,8 @@ Unfortunately theres currently a few errors regarding installation.
 - Displays the hostname
 - Detects the operating system
 - Shows Linux distribution information
-- Displays CPU and GPU information
+- Displays CPU information
+- Displays GPU information if applicable, only works with some AMD cards currently, W.I.P
 - Shows total RAM
 - Lists network interface addresses
 
