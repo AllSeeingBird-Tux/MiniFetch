@@ -70,7 +70,17 @@ int main() {
         return EXIT_FAILURE;
     }
 	
-	printf("Total RAM: %lu MB\n", info.totalram / (1024 * 1024));
+   
+    unsigned long ramamt = info.totalram / 1024 / 1024;
+    float ramtot;
+
+    if (ramamt >= 1024) {
+        ramtot = ramamt / 1024.0;
+        printf("Total RAM: %.2f GB\n", ramtot);
+    } else {
+        ramtot = ramamt; 
+        printf("Total RAM: %lu MB\n", ramtot);
+    }
 	
 
     if (getifaddrs(&ifaddr) == -1) {
