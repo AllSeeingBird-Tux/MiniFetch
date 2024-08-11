@@ -33,6 +33,7 @@ GPUInfo gpu_database[] = {
     {"0x10DE", "0x1F08", "NVIDIA GeForce RTX 2060"},
     {"0x10DE", "0x2182", "NVIDIA GeForce GTX 1660 Ti"},
     {"0x10DE", "0x21C4", "NVIDIA GeForce GTX 1660 Super"},
+    {"0x10DE", "0x1F82", "NVIDIA GeForce GTX 1650"},
     {"0x10DE", "0x1F83", "NVIDIA GeForce GTX 1650 Super"},
 
 
