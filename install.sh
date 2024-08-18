@@ -1,11 +1,8 @@
 #!/bin/bash
 
 
-make
-
-
 if [ $? -eq 0 ]; then
-	gcc main.c other.c -o minifetch
+	gcc main.c other.c gpufetch.c -o minifetch
     sudo mv minifetch /usr/local/bin/
 
     if [ $? -eq 0 ]; then

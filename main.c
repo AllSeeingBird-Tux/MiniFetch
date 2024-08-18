@@ -10,6 +10,8 @@
 #include <unistd.h>
 #include <netdb.h>
 #include "other.h"
+#include "gpugrab.h"
+#include <vulkan/vulkan.h>
 
 
 
@@ -63,7 +65,15 @@ int main() {
 	
 	get_cpu_info();
 	
-    get_gpu_info();
+	int gpu_count = 0;
+    char *gpu_models[10];  // Assuming a maximum of 10 GPUs
+
+    get_gpu_model_names(gpu_models, &gpu_count);
+
+    for (int i = 0; i < gpu_count; i++) {
+        printf("GPU %d: %s\n", i + 1, gpu_models[i]);
+        free(gpu_models[i]);  // Free allocated memory
+    }
 	
 	 if (sysinfo(&info) != 0) {
         perror("sysinfo");
